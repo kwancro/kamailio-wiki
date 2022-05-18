@@ -76,7 +76,7 @@ The first step is to generate build config files.
 Next step is to enable the MySQL module. Edit *modules.lst* file:
 
     nano -w src/modules.lst
-    or
+    # or
     vim src/modules.lst
 
 Add *db_mysql* to the variable *include_modules*.
@@ -189,10 +189,10 @@ create a database named `kamailio` containing the tables required by Kamailio.
 You can change the default settings in the kamctlrc file mentioned above.
 The script will add two users in `MySQL`:
 
-- *kamailio* - (with default password `kamailiorw`) - user which has full
+- **kamailio** - (with default password `kamailiorw`) - user which has full
 access rights to `kamailio` database
 
-- *kamailioro* - (with default password `kamailioro`) - user which has
+- **kamailioro** - (with default password `kamailioro`) - user which has
 read-only access rights to `kamailio` database
 
 *IMPORTANT: do change the passwords for these two users to something different
@@ -209,8 +209,8 @@ Follow the instruction in the comments to enable usage of MySQL. Basically you
 have to add several lines at the top of config file, like:
 
     #!define WITH_MYSQL
-    # !define WITH_AUTH
-    # !define WITH_USRLOCDB
+    #!define WITH_AUTH
+    #!define WITH_USRLOCDB
 
 If you changed the password for the `kamailio` user of MySQL, you have to update
 the value for `db_url` parameters.
@@ -231,6 +231,7 @@ To install the `init.d` script, run in Kamailio source code directory:
 
 Follow any instructions that may be printed by the above commad.
 Then you can start/stop Kamailio using the following commands:
+
     /etc/init.d/kamailio start
     /etc/init.d/kamailio stop
 
@@ -262,13 +263,13 @@ parameters. For example:
 
 - start Kamailio
 
-    /usr/local/sbin/kamailio -P /var/run/kamailio/kamailio.pid -m 128 -M 12
+      /usr/local/sbin/kamailio -P /var/run/kamailio/kamailio.pid -m 128 -M 12
 
 - stop Kamailio
 
-    killall kamailio
-    #or
-    kill -TERM $(cat /var/run/kamailio/kamailio.pid)
+      killall kamailio
+      #or
+      kill -TERM $(cat /var/run/kamailio/kamailio.pid)
 
 ## 10. Ready To Rock
 
@@ -283,18 +284,18 @@ option.
 
 - run in terminal:
 
-    export SIP_DOMAIN=mysipserver.com
-    kamctl add username password
+      export SIP_DOMAIN=mysipserver.com
+      kamctl add username password
 
 - or edit `/usr/local/etc/kamailio/kamctlrc` and add:
 
-    SIP_DOMAIN=mysipserver.com
+      SIP_DOMAIN=mysipserver.com
 
 and then run again `kamctl add ...` as above.
 
 - or give the username with domain in `kamctl add ...` parameter:
 
-    kamctl add username@mysipserver.com password
+      kamctl add username@mysipserver.com password
 
 Instead of `mysipserver.com` it has to be given the real domain for the SIP service
 or the IP address of Kamailio.
