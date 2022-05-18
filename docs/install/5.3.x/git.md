@@ -8,7 +8,7 @@ For more about Kamailio Project visit: [kamailio.org](https://www.kamailio.org).
 
     Support: <sr-users@lists.kamailio.org>
 
-## Overview
+## 1. Overview
 
 This is a step by step tutorial about how to install and maintain Kamailio SIP
 server version 5.3.x using the sources downloaded from GIT repository -
@@ -16,7 +16,7 @@ the choice for those willing to write code for Kamailio or to try the new
 features to be released in the future with the next major stable version.
 This document focuses on Kamailio v5.3.x with MySQL support, using a Debian stable system.
 
-## Prerequisites
+## 2. Prerequisites
 
 To be able to follow the guidelines from this document you need `root` access.
 The following packages are required before proceeding to the next steps.
@@ -44,14 +44,14 @@ and *ctl* modules.
 *Note*: *g++* compiler is needed for couple of modules that link to C++ libraries,
 such as app_sqlang, phonenum or ndb_cassandra.
 
-### MySQL Or MariaDB Server
+### 2.1 MySQL Or MariaDB Server
 
 To complete all the steps in this tutorial, it is required to have a *MySQL* or *MariaDB* server installed.
 Consult the documentation of *MySQL* or *MariaDB* server for Debian for a proper installation.
 For testing purposes, it can just be done with `apt-get install mysql-server` or `apt-get install default-mysql-server`.
 During or after installation you may have to complete some configuration steps, such as setting the password for mysql root user or initialize the database system.
 
-## Getting Sources From GIT
+## 3. Getting Sources From GIT
 
 First of all, you have to create a directory on the file system where the sources
 will be stored.
@@ -67,7 +67,7 @@ Download the sources from GIT using the following commands.
 
 *Note: if your git client version does not support --no-single-branch command line parameter, then just remove it*
 
-## Tuning Makefiles
+## 4. Tuning Makefiles
 
 The first step is to generate build config files.
 
@@ -105,7 +105,7 @@ More hints about `Makefile` system at:
 
 - [kamailio.org/wiki/devel/makefile-system](https://www.kamailio.org/wiki/devel/makefile-system)
 
-## Compile Kamailio
+## 5. Compile Kamailio
 
 Once you added the mysql module to the list of enabled modules, you can compile Kamailio:
 
@@ -115,13 +115,13 @@ You can get full compile flags output using:
 
     make Q=0 all
 
-## Install Kamailio
+## 6. Install Kamailio
 
 When the compilation is ready, install Kamailio with the following command:
 
     make install
 
-### What And Where Was Installed
+### 6.1 What And Where Was Installed
 
 The binaries and executable scripts were installed in: `/usr/local/sbin`
 
@@ -162,7 +162,7 @@ The configuration file was installed in:
 replace */usr/local* in all paths above with the value of `PREFIX` in order to
 locate the files installed.
 
-## Create MySQL Database
+## 7. Create MySQL Database
 
 To create the `MySQL` database, you have to use the database setup script.
 First edit *kamctlrc* file to set the database server type:
@@ -198,7 +198,7 @@ read-only access rights to `kamailio` database
 *IMPORTANT: do change the passwords for these two users to something different
 that the default values that come with sources.*
 
-## Edit Configuration File
+## 8. Edit Configuration File
 
 To fit your requirements for the VoIP platform, you have to edit the
 configuration file.
@@ -217,13 +217,13 @@ the value for `db_url` parameters.
 You can browse [kamailio.cfg](https://github.com/kamailio/kamailio/blob/master/etc/kamailio.cfg)
 online on GIT repository.
 
-## Running Kamailio
+## 9. Running Kamailio
 
 There are couple of variants for starting/stopping/restarting Kamailio,
 the recommended ones being via `init.d` script or `systemd` unit, a matter of
 what the Debian OS is configured to use.
 
-### Init.d Script
+### 9.1 Init.d Script
 
 To install the `init.d` script, run in Kamailio source code directory:
 
@@ -234,7 +234,7 @@ Then you can start/stop Kamailio using the following commands:
     /etc/init.d/kamailio start
     /etc/init.d/kamailio stop
 
-### Systemd Unit
+### 9.2 Systemd Unit
 
 To install the `systemd` unit, run in Kamailio source code directory:
 
@@ -246,7 +246,7 @@ Then you can start/stop Kamailio using the following commands:
     systemctl start kamailio
     systemctl stop kamailio
 
-### Kamctl
+### 9.3 Kamctl
 
 You may need to edit edit `/usr/local/etc/kamailio/kamctlrc` and set the
 `PID_FILE` and `STARTOPTIONS` attributes.
@@ -255,7 +255,7 @@ The you can use:
     kamctl start
     kamctl stop
 
-### Command Line
+### 9.4 Command Line
 
 Kamailio can be started from command line by executing the binary with specific
 parameters. For example:
@@ -270,7 +270,7 @@ parameters. For example:
     #or
     kill -TERM $(cat /var/run/kamailio/kamailio.pid)
 
-## Ready To Rock
+## 10. Ready To Rock
 
 Now everything is in place. You can start the VoIP service, creating new
 accounts and setting the phones.
@@ -299,7 +299,7 @@ and then run again `kamctl add ...` as above.
 Instead of `mysipserver.com` it has to be given the real domain for the SIP service
 or the IP address of Kamailio.
 
-## Maintenance
+## 11. Maintenance
 
 The maintenance process is very simple right now. You have to be user `root` and
 execute following commands:
@@ -312,7 +312,7 @@ execute following commands:
 
 Now you have the latest Kamailio v5.3.x running on your system.
 
-### When To Update
+### 11.1 When To Update
 
 Notification about GIT commits are sent to the mailing list:
 *sr-dev@lists.kamailio.org*. Each commit notification contains the reference
@@ -325,7 +325,7 @@ the lines:
 then an update has been made to Kamailio 5.3 version and it will be available
 to the public GIT in no time.
 
-## Support
+## 12. Support
 
 Questions about how to use Kamailio and the content of kamailio.cfg can be
 addressed via email to:
@@ -337,7 +337,7 @@ More documentation resources can be found at:
 - [www.kamailio.org/w/documentation](https://www.kamailio.org/w/documentation/)
 - [github.com/kamailio/kamailio-wiki](https://github.com/kamailio/kamailio-wiki)
 
-## Contributions
+## 13. Contributions
 
 Anyone is welcome to contribute to this document. It is recommended to make a
 pull request via:
