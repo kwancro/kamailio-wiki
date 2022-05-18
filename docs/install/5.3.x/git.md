@@ -343,9 +343,9 @@ More documentation resources can be found at:
 Anyone is welcome to contribute to this document. It is recommended to make a
 pull request via:
 
-- [github.com/kamailio/kamailio-docs/pulls](https://github.com/kamailio/kamailio-docs/pulls)
+- [github.com/kamailio/kamailio-wiki/pulls](https://github.com/kamailio/kamailio-wiki/pulls)
 
 This version of the document is in GIT branch `master`.
 Errors and other issues can be reported via the tracker at:
 
-- [github.com/kamailio/kamailio-docs/issues](https://github.com/kamailio/kamailio-docs/issues)
+- [github.com/kamailio/kamailio-wiki/issues](https://github.com/kamailio/kamailio-wiki/issues)
