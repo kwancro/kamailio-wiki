@@ -30,10 +30,10 @@ The following packages are required before proceeding to the next steps.
 - *libmysqlclient-dev* - `apt-get install libmysqlclient-dev` (or: `apt install default-libmysqlclient-dev`)
 - *make* and *autoconf* - `apt-get install make autoconf`
 - if you want to enable more modules, some of them require extra libraries:
-- *libssl* - `apt-get install libssl-dev`
-- *libcurl* - `apt-get install libcurl4-openssl-dev`
-- *libxml2* - `apt-get install libxml2-dev`
-- *libpcre3* - `apt-get install libpcre3-dev`
+  - *libssl* - `apt-get install libssl-dev`
+  - *libcurl* - `apt-get install libcurl4-openssl-dev`
+  - *libxml2* - `apt-get install libxml2-dev`
+  - *libpcre3* - `apt-get install libpcre3-dev`
 
 *Important Note*: starting with version `4.3.0`, Kamailio uses the directory
 */var/run/kamailio/* for creating FIFO and UnixSocket control files. You may have
